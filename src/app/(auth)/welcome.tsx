@@ -1,15 +1,15 @@
 import { router } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AppButton } from '@/components/app-button';
 import { BrandLogo } from '@/components/brand-logo';
+import ScreenContainer from '@/components/ScreenContainer';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function WelcomeScreen() {
   const theme = useTheme();
   return (
-    <SafeAreaView style={[styles.safe, { backgroundColor: theme.background }]}>
+    <ScreenContainer>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.top}>
           <BrandLogo />
@@ -31,13 +31,12 @@ export default function WelcomeScreen() {
           Tout le monde joue volontairement. Tu peux passer ou arrêter à tout moment.
         </Text>
       </ScrollView>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
-  container: { flexGrow: 1, maxWidth: 800, paddingHorizontal: 24, width: '100%', alignSelf: 'center' },
+  container: { flexGrow: 1, maxWidth: 800, width: '100%', alignSelf: 'center' },
   top: { paddingTop: 12 },
   hero: { flex: 1, justifyContent: 'center', paddingVertical: 32 },
   badge: { alignSelf: 'flex-start', borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7 },

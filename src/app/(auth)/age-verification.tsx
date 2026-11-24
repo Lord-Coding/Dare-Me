@@ -1,10 +1,10 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AppButton } from '@/components/app-button';
 import { BrandLogo } from '@/components/brand-logo';
+import ScreenContainer from '@/components/ScreenContainer';
 import { useTheme } from '@/hooks/use-theme';
 import { setAgeVerified } from '@/services/age-storage';
 
@@ -23,7 +23,7 @@ export default function AgeVerificationScreen() {
   }
 
   return (
-    <SafeAreaView style={[styles.safe, { backgroundColor: theme.background }]}>
+    <ScreenContainer>
       <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
         <BrandLogo compact />
         {denied ? (
@@ -61,13 +61,12 @@ export default function AgeVerificationScreen() {
           </>
         )}
       </ScrollView>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
-  container: { flexGrow: 1, maxWidth: 800, paddingHorizontal: 24, paddingBottom: 24, width: '100%', alignSelf: 'center' },
+  container: { flexGrow: 1, maxWidth: 800, paddingBottom: 24, width: '100%', alignSelf: 'center' },
   hero: { flex: 1, justifyContent: 'center', paddingVertical: 24 },
   icon: { alignItems: 'center', borderRadius: 22, height: 88, justifyContent: 'center', width: 88 },
   iconText: { color: '#FFFFFF', fontSize: 32, fontWeight: '900' },

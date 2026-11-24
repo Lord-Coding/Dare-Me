@@ -1,15 +1,15 @@
 import { router } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BrandLogo } from '@/components/brand-logo';
+import ScreenContainer from '@/components/ScreenContainer';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function HomeScreen() {
   const theme = useTheme();
 
   return (
-    <SafeAreaView style={[styles.safe, { backgroundColor: theme.background }]}>
+    <ScreenContainer includeBottomSafeArea>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <BrandLogo compact />
@@ -47,13 +47,12 @@ export default function HomeScreen() {
           <Text style={[styles.noticeText, { color: theme.textSecondary }]}>Consentement, respect et droit de passer. Aucun joueur ne doit subir de pression.</Text>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1 },
-  container: { flexGrow: 1, maxWidth: 800, paddingHorizontal: 24, paddingBottom: 32, width: '100%', alignSelf: 'center' },
+  container: { flexGrow: 1, maxWidth: 800, paddingBottom: 32, width: '100%', alignSelf: 'center' },
   header: { alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingTop: 8 },
   avatar: { alignItems: 'center', borderRadius: 22, height: 44, justifyContent: 'center', width: 44 },
   avatarText: { fontSize: 18, fontWeight: '900' },
