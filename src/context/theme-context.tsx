@@ -19,5 +19,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         [scheme],
     );
 
-    return (<ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>)
+    return (
+        <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider> 
+    )
 }
